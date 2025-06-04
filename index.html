@@ -1,78 +1,34 @@
+
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>محول الحروف من فرانكو إلى عربي</title>
-  <style>
-    body {
-      background: linear-gradient(to right, #d3cce3, #e9e4f0);
-      font-family: 'Tajawal', sans-serif;
-      text-align: center;
-      padding: 50px;
-      direction: rtl;
-      color: #333;
-    }
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
-    }
-    textarea {
-      width: 90%;
-      height: 180px;
-      font-size: 22px;
-      padding: 10px;
-      border-radius: 12px;
-      border: 1px solid #aaa;
-      resize: none;
-      outline: none;
-    }
-    .output {
-      background-color: #fff;
-      margin-top: 30px;
-      padding: 20px;
-      font-size: 28px;
-      border-radius: 15px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      min-height: 80px;
-    }
-    footer {
-      margin-top: 50px;
-      font-size: 16px;
-      color: #666;
-    }
-    footer a {
-      color: #444;
-      text-decoration: none;
-      font-weight: bold;
-    }
-  </style>
+  <title>موقع فيصل لتحويل الحروف والزخرفة</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>📝 اكتب فرانكو... وشوفها تتحول لعربي ✨</h1>
-  <textarea id="input" placeholder="مثال: ana 7abibi w inta fe galbi"></textarea>
-  <div class="output" id="output">⬅️ النتيجة تظهر هنا</div>
+  <header>
+    <h1>🖋️ أدوات فيصل للتحويل والزخرفة</h1>
+    <p>تصميم وتطوير: فيصل العنزي – <a href="https://github.com/desfe9l" target="_blank">@desfe9l</a></p>
+  </header>
+
+  <section class="tool">
+    <h2>تحويل فرانكو إلى عربي</h2>
+    <textarea id="francoInput" placeholder="اكتب هنا فرانكو..."></textarea>
+    <div id="francoOutput">النتيجة تظهر هنا</div>
+  </section>
+
+  <section class="tool">
+    <h2>زخرفة الاسم</h2>
+    <input type="text" id="nameInput" placeholder="اكتب اسمك">
+    <div id="nameOutput">زخارفك هنا</div>
+  </section>
 
   <footer>
-    تصميم وتطوير: <a href="https://github.com/desfe9l" target="_blank">@desfe9l</a> – فيصل العنزي
+    جميع الحقوق محفوظة &copy; 2025 | فيصل العنزي
   </footer>
 
-  <script>
-    const map = {
-      2: 'أ', 3: 'ع', 4: 'غ', 5: 'خ', 6: 'ط', 7: 'ح', 8: 'ق', 9: 'ص',
-      a: 'ا', b: 'ب', t: 'ت', th: 'ث', j: 'ج', h: 'ه', d: 'د', r: 'ر',
-      z: 'ز', s: 'س', sh: 'ش', f: 'ف', q: 'ق', k: 'ك', l: 'ل', m: 'م',
-      n: 'ن', w: 'و', y: 'ي', e: 'ي', o: 'و', g: 'ج'
-    };
-
-    document.getElementById('input').addEventListener('input', function () {
-      let val = this.value.toLowerCase();
-      // تحويل الحروف الطويلة أولًا
-      val = val.replace(/th/g, 'ث').replace(/sh/g, 'ش');
-      // الحروف المفردة
-      let result = val.split('').map(c => map[c] || c).join('');
-      document.getElementById('output').textContent = result;
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>

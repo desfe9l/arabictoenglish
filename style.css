@@ -1,0 +1,37 @@
+
+body {
+  font-family: 'Tajawal', sans-serif;
+  background: #f8f8f8;
+  color: #333;
+  text-align: center;
+  padding: 20px;
+}
+header h1 {
+  color: #4a148c;
+}
+.tool {
+  margin: 40px auto;
+  max-width: 600px;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+textarea, input {
+  width: 90%;
+  padding: 10px;
+  margin-top: 10px;
+  font-size: 18px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+#francoOutput, #nameOutput {
+  margin-top: 20px;
+  font-size: 24px;
+  color: #2e7d32;
+}
+footer {
+  margin-top: 60px;
+  font-size: 14px;
+  color: #777;
+}

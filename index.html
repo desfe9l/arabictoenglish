@@ -1,59 +1,78 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-  <meta charset="UTF-8">
-  <title>محول الأحرف العربية إلى إنجليزية</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>محول الحروف من فرانكو إلى عربي</title>
   <style>
     body {
-      font-family: 'Arial', sans-serif;
+      background: linear-gradient(to right, #d3cce3, #e9e4f0);
+      font-family: 'Tajawal', sans-serif;
       text-align: center;
       padding: 50px;
-      background: #f2f2f2;
+      direction: rtl;
+      color: #333;
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
     }
     textarea {
-      width: 80%;
-      height: 100px;
-      font-size: 18px;
-      margin-bottom: 20px;
-      direction: rtl;
+      width: 90%;
+      height: 180px;
+      font-size: 22px;
+      padding: 10px;
+      border-radius: 12px;
+      border: 1px solid #aaa;
+      resize: none;
+      outline: none;
     }
     .output {
-      background: #fff;
+      background-color: #fff;
+      margin-top: 30px;
       padding: 20px;
-      border-radius: 10px;
-      font-size: 20px;
-      direction: ltr;
-      border: 1px solid #ccc;
-      width: 80%;
-      margin: 0 auto;
+      font-size: 28px;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      min-height: 80px;
+    }
+    footer {
+      margin-top: 50px;
+      font-size: 16px;
+      color: #666;
+    }
+    footer a {
+      color: #444;
+      text-decoration: none;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
-  <h1>🌀( محول الأحرف العربية الإنجليزي المعرب)</h1>
-  <textarea id="arabicInput" placeholder="اكتب هنا بالعربي..." oninput="convertText()"></textarea>
-  <div class="output" id="outputText"></div>
+  <h1>📝 اكتب فرانكو... وشوفها تتحول لعربي ✨</h1>
+  <textarea id="input" placeholder="مثال: ana 7abibi w inta fe galbi"></textarea>
+  <div class="output" id="output">⬅️ النتيجة تظهر هنا</div>
+
+  <footer>
+    تصميم وتطوير: <a href="https://github.com/desfe9l" target="_blank">@desfe9l</a> – فيصل العنزي
+  </footer>
 
   <script>
     const map = {
-      'ا': 'a', 'أ': 'a', 'إ': 'e', 'آ': 'aa',
-      'ب': 'b', 'ت': 't', 'ث': 'th', 'ج': 'j',
-      'ح': '7', 'خ': '5', 'د': 'd', 'ذ': 'th',
-      'ر': 'r', 'ز': 'z', 'س': 's', 'ش': 'sh',
-      'ص': '9', 'ض': "9'", 'ط': '6', 'ظ': "6'",
-      'ع': '3', 'غ': "3'", 'ف': 'f', 'ق': '8',
-      'ك': 'k', 'ل': 'l', 'م': 'm', 'ن': 'n',
-      'ه': 'h', 'و': 'w', 'ي': 'y', 'ى': 'a', 'ة': 'h', 'ء': "'"
+      2: 'أ', 3: 'ع', 4: 'غ', 5: 'خ', 6: 'ط', 7: 'ح', 8: 'ق', 9: 'ص',
+      a: 'ا', b: 'ب', t: 'ت', th: 'ث', j: 'ج', h: 'ه', d: 'د', r: 'ر',
+      z: 'ز', s: 'س', sh: 'ش', f: 'ف', q: 'ق', k: 'ك', l: 'ل', m: 'م',
+      n: 'ن', w: 'و', y: 'ي', e: 'ي', o: 'و', g: 'ج'
     };
 
-    function convertText() {
-      const input = document.getElementById('arabicInput').value;
-      let result = '';
-      for (let char of input) {
-        result += map[char] || char;
-      }
-      document.getElementById('outputText').innerText = result;
-    }
+    document.getElementById('input').addEventListener('input', function () {
+      let val = this.value.toLowerCase();
+      // تحويل الحروف الطويلة أولًا
+      val = val.replace(/th/g, 'ث').replace(/sh/g, 'ش');
+      // الحروف المفردة
+      let result = val.split('').map(c => map[c] || c).join('');
+      document.getElementById('output').textContent = result;
+    });
   </script>
 </body>
 </html>
